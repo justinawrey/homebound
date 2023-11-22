@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc88b199c77be4c888fce7c7ecd812e5, type: 3}
+  m_Name: TitleSceneSettings
+  m_EditorClassIdentifier: 
+  Name: scene-settings-title
+  Description: 
+  _sceneReference:
+    asset: {fileID: 102900000, guid: efd2b13f1ea4c4f97a5c0413b0e7fb07, type: 3}
+    guid: efd2b13f1ea4c4f97a5c0413b0e7fb07
+  _inputActionAsset: {fileID: -944628639613478452, guid: 420a3e30cf0b6481fa1091b4c0f5fa09,
+    type: 3}

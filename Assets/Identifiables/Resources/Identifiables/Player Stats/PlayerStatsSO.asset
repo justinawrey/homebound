@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d5872cb23104ae898a3b8a459df74e, type: 3}
+  m_Name: PlayerStatsSO
+  m_EditorClassIdentifier: 
+  Name: player_stats
+  Description: 
+  HouseBuild: {fileID: 11400000, guid: 070b49e036fb74daea0127d5e8d3689f, type: 2}
+  CurrHealth:
+    _val: 69
+  TotalHealth:
+    _val: 100
+  AccruedLevels:
+    _val: 2
+  Level:
+    _val: 5
+  CurrExp:
+    _val: 23
+  RequiredToNextLevel:
+    _val: 50
+  Money:
+    _val: 684
