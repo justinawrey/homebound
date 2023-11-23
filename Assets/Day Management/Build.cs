@@ -3,34 +3,49 @@ using UnityEngine;
 
 public class Build : MonoBehaviour
 {
-  [SerializeField] private GhostObject _ghostObject;
+  [SerializeField] private PlayerStatsSO _playerStatsSO;
+  [SerializeField] private PlacementSO _placement;
+  [SerializeField] private Transform _placementContainer;
 
-  private void Awake()
+  private GhostObject _ghostObject;
+
+  private void Start()
   {
-    EventBus.OnUpgradePhaseEnd += StartBuildPhase;
+    _ghostObject = TagUtils.FindWithTag(TagName.GhostObject).GetComponent<GhostObject>();
+    StartCoroutine(TryPlaceActivePlacementRoutine());
   }
 
-  private void OnDestroy()
-  {
-    EventBus.OnUpgradePhaseEnd -= StartBuildPhase;
-  }
+  //   private void StartBuildPhase(UpgradeSO[] upgrades)
+  //   {
+  //     EventBus.StartBuildPhase(upgrades);
+  //     // TODO: just make this a scene transition
+  //     // CustomInputManager.SetCurrActionMap(ActionMapName.BuildPhase);
+  //     StartCoroutine(PlaceRoutine(upgrades));
+  //   }
 
-  private void StartBuildPhase(UpgradeSO[] upgrades)
-  {
-    EventBus.StartBuildPhase(upgrades);
-    // TODO: just make this a scene transition
-    // CustomInputManager.SetCurrActionMap(ActionMapName.BuildPhase);
-    StartCoroutine(PlaceRoutine(upgrades));
-  }
+  //   private IEnumerator PlaceRoutine(UpgradeSO[] upgrades)
+  //   {
+  //     foreach (UpgradeSO upgrade in upgrades)
+  //     {
+  //       _ghostObject.StartPlacement(upgrade.UpgradePrefab);
+  //       yield return new WaitUntil(() => _ghostObject.IsPlaced());
+  //     }
 
-  private IEnumerator PlaceRoutine(UpgradeSO[] upgrades)
+  //     EventBus.EndBuildPhase();
+  //   }
+
+  private IEnumerator TryPlaceActivePlacementRoutine()
   {
-    foreach (UpgradeSO upgrade in upgrades)
+    while (true)
     {
-      _ghostObject.StartPlacement(upgrade.UpgradePrefab);
-      yield return new WaitUntil(() => _ghostObject.IsPlaced());
-    }
+      _ghostObject.StartPlacement(_placement.Prefab);
 
-    EventBus.EndBuildPhase();
+      // placementPos is in world space
+      yield return new WaitUntil(() => _ghostObject.IsPlaced());
+
+      // now place! we need to place in local space
+      Vector3 localPlacementPos = _placementContainer.InverseTransformPoint(_ghostObject.GetPrevPlacedPosition());
+      _playerStatsSO.HouseBuild.Placements.Add(Vector3Int.RoundToInt(localPlacementPos), _placement);
+    }
   }
 }

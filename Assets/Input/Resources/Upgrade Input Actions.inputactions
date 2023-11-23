@@ -6,7 +6,7 @@
             "id": "cadbc399-36a8-4d8d-a8f0-a6418b566ec1",
             "actions": [
                 {
-                    "name": "Select",
+                    "name": "GameObjectSelect",
                     "type": "Button",
                     "id": "8f22a3e4-2b47-424a-850e-84bbff0d56de",
                     "expectedControlType": "Button",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "Select",
+                    "action": "GameObjectSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

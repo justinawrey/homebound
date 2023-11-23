@@ -19,6 +19,7 @@ public struct Placement
 [CreateAssetMenu(fileName = "HouseBuildSO", menuName = "Assets/HouseBuildSO")]
 public class HouseBuildSO : IdentifiableSO
 {
+  // key: LOCAL SPACE positions
   public ReactiveDict<Vector3Int, PlacementSO> Placements = new ReactiveDict<Vector3Int, PlacementSO>();
 
   // Serialize a list because we cant serialize a dictionary
@@ -27,6 +28,8 @@ public class HouseBuildSO : IdentifiableSO
 
   private void OnValidate()
   {
+    Placements.Clear();
+
     foreach (Placement placement in _placements)
     {
       Placements.Add(placement.Position, placement.PlacementSO);

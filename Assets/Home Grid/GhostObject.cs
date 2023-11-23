@@ -1,15 +1,15 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostObject : MonoBehaviour
 {
     private GameObject _pendingObject = null;
+    private Vector3 _prevPlacedPosition = Vector3.zero;
 
     private void CreateGhostFromObject(GameObject gameObject)
     {
         GameObject instantiated = Instantiate(gameObject, transform);
-        List<Component> validGhostComponents = instantiated.GetComponent<GhostObjectValidity>().GetGhostComponents();
+        // List<Component> validGhostComponents = instantiated.GetComponent<GhostObjectValidity>().GetGhostComponents();
 
         foreach (Component component in instantiated.GetComponentsInChildren<Component>())
         {
@@ -21,10 +21,10 @@ public class GhostObject : MonoBehaviour
             }
 
             // dont destroy valid ghost components
-            if (validGhostComponents.Contains(component))
-            {
-                continue;
-            }
+            // if (validGhostComponents.Contains(component))
+            // {
+            //     continue;
+            // }
 
             Destroy(component);
         }
@@ -42,7 +42,7 @@ public class GhostObject : MonoBehaviour
         return _pendingObject;
     }
 
-    public void SetGhostObjectPosition(Vector3 pos, Quaternion upDirWorldSpace)
+    public void SetGhostObjectPosition(Vector3 pos)
     {
         GameObject ghostObject = GetGhostObject();
         if (ghostObject == null)
@@ -69,8 +69,14 @@ public class GhostObject : MonoBehaviour
 
     public void EndPlacement()
     {
+        _prevPlacedPosition = GetGhostObject().transform.position;
         ClearGhost();
         _pendingObject = null;
+    }
+
+    public Vector3 GetPrevPlacedPosition()
+    {
+        return _prevPlacedPosition;
     }
 
     public bool IsPlaced()

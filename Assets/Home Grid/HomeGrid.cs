@@ -9,6 +9,7 @@ public class HomeGrid : MonoBehaviour
     private void Start()
     {
         InstantiateFromHouseBuildSO();
+        _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement));
     }
 
     [ContextMenu("Init 3x3 on HouseBuildSO")]
@@ -27,9 +28,15 @@ public class HomeGrid : MonoBehaviour
             Vector3Int position = placement.Key;
             PlacementSO placementSO = placement.Value;
 
-            GameObject instantiatedPlacement = Instantiate(placementSO.Prefab, _placementContainer.TransformPoint(position), Quaternion.identity, _placementContainer);
+            GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placementSO);
             ApplyModsOnPlacement(instantiatedPlacement, placementSO.Mods);
         }
+    }
+
+    private GameObject InstantiateInPlacementContainer(Vector3Int position, PlacementSO placementSO)
+    {
+        // print("position: " + position);
+        return Instantiate(placementSO.Prefab, _placementContainer.TransformPoint(position), Quaternion.identity, _placementContainer);
     }
 
     private void ApplyModsOnPlacement(GameObject placement, List<ModSO> mods)

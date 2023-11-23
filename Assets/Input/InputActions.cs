@@ -11,7 +11,7 @@ public enum ActionMapName
 
 public enum ActionName
 {
-  Select,
+  GameObjectSelect,
   UiSelect,
   RotateCameraClockwise,
   RotateCameraCounterClockwise,

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlacementSO
   Name: 
   Description: 
-  Prefab: {fileID: 1558325765781056088, guid: 121150618c41648ff9dca2a1d70f952c, type: 3}
+  Prefab: {fileID: 3742743477326351635, guid: 11610f43ff6fc453fbf9ab8abc2f4c52, type: 3}
   Mods: []

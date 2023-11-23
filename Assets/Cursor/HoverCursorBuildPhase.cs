@@ -87,18 +87,19 @@ public class HoverCursorBuildPhase : MonoBehaviour
     private GameObject _cursorRaycastMarker;
 
     private RaycastHit _activeRaycastHit;
-    private Reactive<GameObject> _hoverObject = new Reactive<GameObject>(null);
-
+    private GameObject _identityGameObject;
+    private Reactive<GameObject> _hoverObject;
     private void Awake()
     {
-        // TODO: this action map name might need to change?
-        CustomInputManager.SubscribeToAction(ActionMapName.Default, ActionName.Select, OnSelectInputAction);
-
+        // TODO: ..... hmm.
+        _identityGameObject = new GameObject("identity");
+        _hoverObject = new Reactive<GameObject>(_identityGameObject);
+        CustomInputManager.SubscribeToAction(ActionMapName.Default, ActionName.GameObjectSelect, OnGameObjectSelectInputAction);
         _hoverObject.OnChange(ProcessHoverChange);
         // _selectedObjects = new SelectionSet(TriggerSelectionStartCb, TriggerSelectionEndCb);
     }
 
-    private void OnSelectInputAction(CallbackContext context)
+    private void OnGameObjectSelectInputAction(CallbackContext context)
     {
         GameObject hoverObject = _hoverObject.Value;
 
@@ -127,10 +128,10 @@ public class HoverCursorBuildPhase : MonoBehaviour
         }
     }
 
-    public void OnBeforeNextSceneLoad()
-    {
-        CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.Select, OnSelectInputAction);
-    }
+    // public void OnBeforeNextSceneLoad()
+    // {
+    // CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.Select, OnSelectInputAction);
+    // }
 
     private void Update()
     {
@@ -157,7 +158,7 @@ public class HoverCursorBuildPhase : MonoBehaviour
         }
         else
         {
-            _hoverObject.Value = null;
+            _hoverObject.Value = _identityGameObject;
         }
     }
 
