@@ -4,7 +4,7 @@ using UnityEngine;
 public class Build : MonoBehaviour
 {
   [SerializeField] private PlayerStatsSO _playerStatsSO;
-  [SerializeField] private PlacementSO _placement;
+  [SerializeField] private PlacementSO _placementSO;
   [SerializeField] private Transform _placementContainer;
 
   private GhostObject _ghostObject;
@@ -38,14 +38,15 @@ public class Build : MonoBehaviour
   {
     while (true)
     {
-      _ghostObject.StartPlacement(_placement.Prefab);
+      _ghostObject.StartPlacement(_placementSO.Prefab);
 
       // placementPos is in world space
       yield return new WaitUntil(() => _ghostObject.IsPlaced());
 
       // now place! we need to place in local space
       Vector3 localPlacementPos = _placementContainer.InverseTransformPoint(_ghostObject.GetPrevPlacedPosition());
-      _playerStatsSO.HouseBuild.Placements.Add(Vector3Int.RoundToInt(localPlacementPos), _placement);
+      Placement placement = new Placement(_placementSO, _ghostObject.GetPrevPlacedRotation());
+      _playerStatsSO.HouseBuild.Placements.Add(Vector3Int.RoundToInt(localPlacementPos), placement);
     }
   }
 }

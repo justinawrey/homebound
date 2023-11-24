@@ -6,13 +6,10 @@ public class HomeGrid : MonoBehaviour
     [SerializeField] private PlayerStatsSO _playerStatsSO;
     [SerializeField] private Transform _placementContainer;
 
-    private GhostObject _ghostObject;
-
     private void Start()
     {
-        _ghostObject = TagUtils.FindWithTag(TagName.GhostObject).GetComponent<GhostObject>();
         InstantiateFromHouseBuildSO();
-        _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, Quaternion.Euler(_ghostObject.GetPrevPlacedRotation()), placement));
+        _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement.Quaternion, placement.PlacementSO));
     }
 
     [ContextMenu("Init 3x3 on HouseBuildSO")]
@@ -26,13 +23,13 @@ public class HomeGrid : MonoBehaviour
     {
         DestroyChildrenInEditor();
 
-        foreach (KeyValuePair<Vector3Int, PlacementSO> placement in _playerStatsSO.HouseBuild.Placements)
+        foreach (KeyValuePair<Vector3Int, Placement> pair in _playerStatsSO.HouseBuild.Placements)
         {
-            Vector3Int position = placement.Key;
-            PlacementSO placementSO = placement.Value;
+            Vector3Int position = pair.Key;
+            Placement placement = pair.Value;
 
-            GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, Quaternion.identity, placementSO);
-            ApplyModsOnPlacement(instantiatedPlacement, placementSO.Mods);
+            GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.Quaternion, placement.PlacementSO);
+            ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
         }
     }
 

@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStatsSO: {fileID: 11400000, guid: 9432f8ce5824347d1918d61801c3aeef, type: 2}
-  _placement: {fileID: 11400000, guid: ed1757d563b054ee6b05520ab5bc48ac, type: 2}
+  _placementSO: {fileID: 11400000, guid: ed1757d563b054ee6b05520ab5bc48ac, type: 2}
   _placementContainer: {fileID: 1910248299}
 --- !u!1001 &300602391
 PrefabInstance:

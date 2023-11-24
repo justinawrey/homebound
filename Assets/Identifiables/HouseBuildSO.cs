@@ -4,15 +4,37 @@ using ReactiveUnity;
 using UnityEngine;
 
 [Serializable]
-public struct Placement
+public struct SerializablePlacement
 {
   public Vector3Int Position;
   public PlacementSO PlacementSO;
+  public Vector3 Orientation;
 
-  public Placement(int i, int j, int k, PlacementSO placementSO)
+  public SerializablePlacement(int i, int j, int k, PlacementSO placementSO)
   {
     Position = new Vector3Int(i, j, k);
     PlacementSO = placementSO;
+    Orientation = Vector3.up;
+  }
+}
+
+public class Placement
+{
+  public PlacementSO PlacementSO;
+  public Vector3 Orientation;
+
+  public Quaternion Quaternion
+  {
+    get
+    {
+      return Quaternion.Euler(Orientation);
+    }
+  }
+
+  public Placement(PlacementSO placementSO, Vector3 orientation)
+  {
+    PlacementSO = placementSO;
+    Orientation = orientation;
   }
 }
 
@@ -20,19 +42,19 @@ public struct Placement
 public class HouseBuildSO : IdentifiableSO
 {
   // key: LOCAL SPACE positions
-  public ReactiveDict<Vector3Int, PlacementSO> Placements = new ReactiveDict<Vector3Int, PlacementSO>();
+  public ReactiveDict<Vector3Int, Placement> Placements = new ReactiveDict<Vector3Int, Placement>();
 
   // Serialize a list because we cant serialize a dictionary
-  [SerializeField] private List<Placement> _placements = new List<Placement>();
+  [SerializeField] private List<SerializablePlacement> _placements = new List<SerializablePlacement>();
   [SerializeField] private PlacementSO _baseBuildingBlock;
 
   private void OnValidate()
   {
     Placements.Clear();
 
-    foreach (Placement placement in _placements)
+    foreach (SerializablePlacement placement in _placements)
     {
-      Placements.Add(placement.Position, placement.PlacementSO);
+      Placements.Add(placement.Position, new Placement(placement.PlacementSO, placement.Orientation));
     }
   }
 
@@ -56,7 +78,7 @@ public class HouseBuildSO : IdentifiableSO
         for (int k = 0; k < idxs.Length; k++)
         {
           var idxk = idxs[k];
-          _placements.Add(new Placement(idxi, idxj, idxk, _baseBuildingBlock));
+          _placements.Add(new SerializablePlacement(idxi, idxj, idxk, _baseBuildingBlock));
         }
       }
     }
