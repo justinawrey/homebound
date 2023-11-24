@@ -97,4 +97,22 @@ public static class EventBus
   {
     OnFreezeFrameFor?.Invoke(duration);
   }
+
+  /// <summary>
+  /// Invoked when house rotation starts.
+  /// </summary>
+  public static event Action OnHouseRotationStart;
+  public static void HouseRotationStart()
+  {
+    OnHouseRotationStart?.Invoke();
+  }
+
+  /// <summary>
+  /// Invoked when house rotation ends.
+  /// </summary>
+  public static event Action OnHouseRotationEnd;
+  public static void HouseRotationEnd()
+  {
+    OnHouseRotationEnd?.Invoke();
+  }
 }

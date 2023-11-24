@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,17 @@ public class PlaceAdjacentToBuildingBlock : MonoBehaviour, IHoverable, ISelectab
   private void Start()
   {
     _ghostObject = TagUtils.FindWithTag(TagName.GhostObject).GetComponent<GhostObject>();
+    EventBus.OnHouseRotationEnd += Snap;
+  }
+
+  private void OnDestroy()
+  {
+    EventBus.OnHouseRotationEnd -= Snap;
+  }
+
+  private void Snap()
+  {
+    MoveGhostObject(_cachedNormal);
   }
 
   public void OnHoverEnter(RaycastHit hit)
@@ -72,7 +84,6 @@ public class PlaceAdjacentToBuildingBlock : MonoBehaviour, IHoverable, ISelectab
       Vector3Int roundedNormal = Vector3Int.RoundToInt(hit.normal.normalized);
       if (roundedNormal != _cachedNormal)
       {
-        print("surface change");
         // we moved to a new face!
         _cachedNormal = roundedNormal;
         MoveGhostObject(_cachedNormal);
