@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,20 +8,25 @@ public class ProgressBar : MonoBehaviour
 
     private RectTransform _markerRt;
     private float _progressBarWidth;
+    private Action _SetProgressToZero;
+    private Action _SetProgressToOne;
 
     private void Awake()
     {
         _progressBarWidth = GetComponent<RectTransform>().rect.width;
         _markerRt = _marker.GetComponent<RectTransform>();
-        EventBus.OnDayStart += () => SetProgress(0);
-        EventBus.OnDayEnd += () => SetProgress(1);
+        _SetProgressToZero = () => SetProgress(0);
+        _SetProgressToOne = () => SetProgress(1);
+
+        EventBus.OnDayStart += _SetProgressToZero;
+        EventBus.OnDayEnd += _SetProgressToOne;
         EventBus.OnDayTick += SetProgress;
     }
 
     private void OnDestroy()
     {
-        EventBus.OnDayStart -= () => SetProgress(0);
-        EventBus.OnDayEnd -= () => SetProgress(1);
+        EventBus.OnDayStart -= _SetProgressToZero;
+        EventBus.OnDayEnd -= _SetProgressToOne;
         EventBus.OnDayTick -= SetProgress;
     }
 

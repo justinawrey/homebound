@@ -5,6 +5,7 @@ public class GhostObject : MonoBehaviour
 {
     private GameObject _pendingObject = null;
     private Vector3 _prevPlacedPosition = Vector3.zero;
+    private Vector3 _prevPlacedRotation = Vector3.zero;
 
     private void CreateGhostFromObject(GameObject gameObject)
     {
@@ -50,11 +51,29 @@ public class GhostObject : MonoBehaviour
             return;
         }
 
-        // TODO: ugh
-        // Vector3 rotationPoint = ghostObject.transform.Find("Rotation Point").position;
-
-        // ghostObject.transform.RotateAround(rotationPoint, Vector3.right, 90);
         ghostObject.transform.position = pos;
+    }
+
+    public Vector3 GetGhostObjectPosition()
+    {
+        GameObject ghostObject = GetGhostObject();
+        if (ghostObject == null)
+        {
+            return Vector3.zero;
+        }
+
+        return ghostObject.transform.position;
+    }
+
+    public void AlignGhostObjectRotationToNormal(Vector3 normal)
+    {
+        GameObject ghostObject = GetGhostObject();
+        if (ghostObject == null)
+        {
+            return;
+        }
+
+        ghostObject.transform.forward = normal;
     }
 
     public GameObject GetGhostObject()
@@ -70,6 +89,7 @@ public class GhostObject : MonoBehaviour
     public void EndPlacement()
     {
         _prevPlacedPosition = GetGhostObject().transform.position;
+        _prevPlacedRotation = GetGhostObject().transform.eulerAngles;
         ClearGhost();
         _pendingObject = null;
     }
@@ -79,9 +99,36 @@ public class GhostObject : MonoBehaviour
         return _prevPlacedPosition;
     }
 
+    public Vector3 GetPrevPlacedRotation()
+    {
+        return _prevPlacedRotation;
+    }
+
     public bool IsPlaced()
     {
         return _pendingObject == null;
+    }
+
+    public void HideGhostObject()
+    {
+        GameObject ghostObject = GetGhostObject();
+        if (ghostObject == null)
+        {
+            return;
+        }
+
+        ghostObject.SetActive(false);
+    }
+
+    public void ShowGhostObject()
+    {
+        GameObject ghostObject = GetGhostObject();
+        if (ghostObject == null)
+        {
+            return;
+        }
+
+        ghostObject.SetActive(true);
     }
 
     private void ClearGhost()

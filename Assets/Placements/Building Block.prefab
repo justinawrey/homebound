@@ -95,3 +95,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b7bc65e3f0148db8f98b0db6c87e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerStatsSO: {fileID: 11400000, guid: 9432f8ce5824347d1918d61801c3aeef, type: 2}
