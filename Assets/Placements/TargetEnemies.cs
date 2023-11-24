@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class TargetEnemies : MonoBehaviour
@@ -50,7 +53,21 @@ public class TargetEnemies : MonoBehaviour
 
     private void Fire()
     {
-        Collider[] enemyColliders = Physics.OverlapSphere(transform.position, _radiusSize);
+        List<Collider> enemyColliders = new List<Collider>();
+        Collider[] cols = Physics.OverlapSphere(transform.position, _radiusSize);
+        foreach (var col in cols)
+        {
+            enemyColliders.Add(col);
+        }
+
+        // sort so the closest enemies are first!
+        enemyColliders.Sort((a, b) =>
+        {
+            float aDistance = Vector3.Distance(a.transform.position, transform.position);
+            float bDistance = Vector3.Distance(b.transform.position, transform.position);
+
+            return (int)(aDistance - bDistance);
+        });
 
         int found = 0;
         foreach (Collider collider in enemyColliders)
