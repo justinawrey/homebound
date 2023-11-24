@@ -14,14 +14,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "681145c15dee749bb854f5fae1f215959cf8c0cf"
+      "hash": "8d6e5aba4b3f3ccdcf17576f466459d6e55b27c2"
     },
     "com.blueoyster.scene-transitions-unity": {
       "version": "https://github.com/justinawrey/scene-transitions-unity.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8894ba288b3ed019f534795209894a081cc29bd2"
+      "hash": "c99fa531d66badd7bae4e3f56defe13494c79da6"
     },
     "com.eflatun.scenereference": {
       "version": "git+https://github.com/starikcetin/Eflatun.SceneReference.git#3.1.3",

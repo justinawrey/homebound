@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,10 +7,19 @@ public class AccrueLevels : MonoBehaviour
     [SerializeField] private PlayerStatsSO _playerStatsSO;
     [SerializeField] private TextMeshProUGUI _textComponent;
 
+    private Action _levelUnsub;
+    private Action _accruedLevelsUnsub;
+
     private void Awake()
     {
-        _playerStatsSO.Level.OnChange((_, __) => AccrueLevel());
-        _playerStatsSO.AccruedLevels.OnChange((_, curr) => SetText(curr));
+        _levelUnsub = _playerStatsSO.Level.OnChange((_, __) => AccrueLevel());
+        _accruedLevelsUnsub = _playerStatsSO.AccruedLevels.OnChange((_, curr) => SetText(curr));
+    }
+
+    private void OnDestroy()
+    {
+        _levelUnsub();
+        _accruedLevelsUnsub();
     }
 
     private void Start()

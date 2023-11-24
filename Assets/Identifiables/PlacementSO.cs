@@ -5,5 +5,6 @@ using UnityEngine;
 public class PlacementSO : IdentifiableSO
 {
   public GameObject Prefab;
+  public Quaternion Rotation = Quaternion.identity;
   public List<ModSO> Mods;
 }

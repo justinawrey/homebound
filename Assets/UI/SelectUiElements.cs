@@ -25,7 +25,7 @@ public class SelectUiElements : MonoBehaviour
         CustomInputManager.SubscribeToAction(_actionMapName, _actionName, RaycastOntoCanvas);
     }
 
-    public void OnBeforeNextSceneSetup()
+    public void OnTransitionOutEnd()
     {
         CustomInputManager.UnsubscribeFromAction(_actionMapName, _actionName, RaycastOntoCanvas);
     }

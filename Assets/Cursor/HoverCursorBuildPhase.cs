@@ -89,13 +89,15 @@ public class HoverCursorBuildPhase : MonoBehaviour
     private RaycastHit _activeRaycastHit;
     private GameObject _identityGameObject;
     private Reactive<GameObject> _hoverObject;
+    private Action _hoverActionUnsub;
+
     private void Awake()
     {
         // TODO: ..... hmm.
         _identityGameObject = new GameObject("identity");
         _hoverObject = new Reactive<GameObject>(_identityGameObject);
         CustomInputManager.SubscribeToAction(ActionMapName.Default, ActionName.GameObjectSelect, OnGameObjectSelectInputAction);
-        _hoverObject.OnChange(ProcessHoverChange);
+        _hoverActionUnsub = _hoverObject.OnChange(ProcessHoverChange);
         // _selectedObjects = new SelectionSet(TriggerSelectionStartCb, TriggerSelectionEndCb);
     }
 
@@ -128,10 +130,15 @@ public class HoverCursorBuildPhase : MonoBehaviour
         }
     }
 
-    // public void OnBeforeNextSceneSetup()
-    // {
-    // CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.Select, OnSelectInputAction);
-    // }
+    private void OnDestroy()
+    {
+        _hoverActionUnsub();
+    }
+
+    public void OnTransitionOutEnd()
+    {
+        CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.GameObjectSelect, OnGameObjectSelectInputAction);
+    }
 
     private void Update()
     {

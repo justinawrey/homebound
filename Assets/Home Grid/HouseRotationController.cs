@@ -17,7 +17,7 @@ public class HouseRotationController : MonoBehaviour
         CustomInputManager.SubscribeToAction(ActionMapName.Default, ActionName.RotateHouseCounterClockwise, RotateCounterClockwise);
     }
 
-    public void OnBeforeNextSceneSetup()
+    public void OnTransitionOutEnd()
     {
         CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.RotateHouseClockwise, RotateClockwise);
         CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.RotateHouseCounterClockwise, RotateCounterClockwise);

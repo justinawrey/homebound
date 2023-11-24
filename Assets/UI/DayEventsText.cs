@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DayEventsText : MonoBehaviour
@@ -11,6 +12,8 @@ public class DayEventsText : MonoBehaviour
     [SerializeField] private float _alertDuration = 1f;
     [SerializeField] private SceneSettingsSO _upgradeSceneSettings;
 
+    private List<Action> _unsubCbs = new List<Action>();
+
     private void Awake()
     {
         _startDayText.enabled = false;
@@ -20,7 +23,8 @@ public class DayEventsText : MonoBehaviour
         EventBus.OnDayStart += () => StartCoroutine(AlertRoutine(_startDayText));
         EventBus.OnDayEnd += () => StartCoroutine(AlertRoutine(_endDayText, SwitchScenes));
 
-        _playerStatsSO.Level.OnChange((_, __) => StartCoroutine(AlertRoutine(_levelUpText)));
+        Action unsub = _playerStatsSO.Level.OnChange((_, __) => StartCoroutine(AlertRoutine(_levelUpText)));
+        _unsubCbs.Add(unsub);
     }
 
     private void SwitchScenes()
@@ -30,6 +34,7 @@ public class DayEventsText : MonoBehaviour
 
     private void OnDestroy()
     {
+        _unsubCbs.ForEach(unsub => unsub());
         EventBus.OnDayStart -= () => StartCoroutine(AlertRoutine(_startDayText));
         EventBus.OnDayEnd -= () => StartCoroutine(AlertRoutine(_endDayText));
     }

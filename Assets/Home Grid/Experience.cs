@@ -1,12 +1,20 @@
+using System;
 using UnityEngine;
 
 public class Experience : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO _playerStatsSO;
 
+    private Action _unsubCb;
+
     private void Start()
     {
-        _playerStatsSO.Level.OnChange((prev, curr) => CalculateExpRequirementsForLevel(curr));
+        _unsubCb = _playerStatsSO.Level.OnChange((prev, curr) => CalculateExpRequirementsForLevel(curr));
+    }
+
+    private void OnDestroy()
+    {
+        _unsubCb();
     }
 
     // TODO: this formula is rudimentary at best
