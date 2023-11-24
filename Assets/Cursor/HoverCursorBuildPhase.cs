@@ -128,7 +128,7 @@ public class HoverCursorBuildPhase : MonoBehaviour
         }
     }
 
-    // public void OnBeforeNextSceneLoad()
+    // public void OnBeforeNextSceneSetup()
     // {
     // CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.Select, OnSelectInputAction);
     // }

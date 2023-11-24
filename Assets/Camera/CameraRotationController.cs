@@ -17,7 +17,7 @@ public class CameraRotationController : MonoBehaviour
     CustomInputManager.SubscribeToAction(ActionMapName.Default, ActionName.RotateCameraCounterClockwise, RotateCameraCounterClockwise);
   }
 
-  public void OnBeforeNextSceneLoad()
+  public void OnBeforeNextSceneSetup()
   {
     CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.RotateCameraClockwise, RotateCameraClockwise);
     CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.RotateCameraCounterClockwise, RotateCameraCounterClockwise);

@@ -10,7 +10,7 @@ public class BeginOnAnyInput : MonoBehaviour
         CustomInputManager.SubscribeToAction(ActionMapName.Default, ActionName.Proceed, StartGame);
     }
 
-    public void OnBeforeNextSceneLoad()
+    public void OnBeforeNextSceneSetup()
     {
         CustomInputManager.UnsubscribeFromAction(ActionMapName.Default, ActionName.Proceed, StartGame);
     }
