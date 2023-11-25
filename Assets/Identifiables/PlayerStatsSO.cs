@@ -1,4 +1,13 @@
+using System;
+using ReactiveUnity;
 using UnityEngine;
+
+[Serializable]
+public class PlayerStat
+{
+    public string Name;
+    public Reactive<int> Amount = new Reactive<int>(0);
+}
 
 /// <summary>
 /// Holds player stats.
@@ -18,6 +27,11 @@ public class PlayerStatsSO : IdentifiableSO, IDamageable
     [SaveData] public PersistedReactive<int> CurrExp = new PersistedReactive<int>(0);
     [SaveData] public PersistedReactive<int> RequiredToNextLevel = new PersistedReactive<int>(10);
     [SaveData] public PersistedReactive<int> Money = new PersistedReactive<int>(0);
+
+    // "fighting" related stats
+    public PlayerStat Damage;
+    public PlayerStat Speed;
+    public PlayerStat Armor;
 
     public float GetHealth()
     {

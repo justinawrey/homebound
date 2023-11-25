@@ -29,3 +29,15 @@ MonoBehaviour:
     _val: 50
   Money:
     _val: 684
+  Damage:
+    Name: DMG
+    Amount:
+      _val: 5
+  Speed:
+    Name: SPEED
+    Amount:
+      _val: 3
+  Armor:
+    Name: ARMOR
+    Amount:
+      _val: 2
