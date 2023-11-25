@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _concurrentTargetCount: 1
-  _radiusSize: 30
+  _radiusSize: 10
   _targetTag: 3
   _bulletOrigin: {fileID: 6694226751492544359}
   _bulletPrefab: {fileID: 3332605427628767198, guid: 727ba05261d73420dbcd6d9b0b453c87,
