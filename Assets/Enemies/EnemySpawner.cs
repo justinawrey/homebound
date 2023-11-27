@@ -49,11 +49,12 @@ public class EnemySpawner : MonoBehaviour
                 // In this case, the damage dealer is the spawner.  kinda weird but fine
                 // wont be used anyways
                 child.gameObject.GetComponent<Health>().Kill(gameObject);
-                continue;
             }
-
-            // otherwise its a marker so just destroy it
-            Destroy(child.gameObject);
+            // If its a spawn marker destroy it
+            else if (TagUtils.CompareTag(child.gameObject, TagName.SpawnMarker))
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 
@@ -78,14 +79,23 @@ public class EnemySpawner : MonoBehaviour
         GameObject marker = Instantiate(_spawnMarkerPrefab, spawnPos, Quaternion.identity, _enemiesContainer);
         yield return new WaitForSeconds(_spawnMarkerDuration);
         Destroy(marker);
-        Instantiate(_enemyPrefab, spawnPos, Quaternion.identity, _enemiesContainer);
+        Instantiate(_enemyPrefab, spawnPos, Quaternion.LookRotation((_houseTransform.position - spawnPos).normalized, Vector3.up), _enemiesContainer);
+    }
+
+    private int RandomSign()
+    {
+        return Random.Range(0, 2) * 2 - 1;
     }
 
     private bool GetSpawnPosition(out Vector3 position)
     {
         // TODO: might need a more accurate height value?
         NavMeshHit hit;
-        if (NavMesh.SamplePosition((Random.insideUnitSphere * Random.Range(_spawnSphereMin, _spawnSphereMax)) + _houseTransform.position, out hit, 2, NavMesh.AllAreas))
+        float randomX = Random.Range(_spawnSphereMin, _spawnSphereMax) * RandomSign();
+        float randomZ = Random.Range(_spawnSphereMin, _spawnSphereMax) * RandomSign();
+
+        Vector3 posToSample = new Vector3(randomX, 0, randomZ) + _houseTransform.position; // ignore y
+        if (NavMesh.SamplePosition(posToSample, out hit, 2, NavMesh.AllAreas))
         {
             position = hit.position;
             return true;
@@ -103,9 +113,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(new Vector3(0, 0, 0), _spawnSphereMin);
+        Gizmos.DrawSphere(_houseTransform.position, _spawnSphereMin);
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(new Vector3(0, 0, 0), _spawnSphereMax);
+        Gizmos.DrawSphere(_houseTransform.position, _spawnSphereMax);
     }
-
 }

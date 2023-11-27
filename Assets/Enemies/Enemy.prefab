@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2391496815075818171}
   - component: {fileID: 1771353505903783043}
   - component: {fileID: 2575381596896601258}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: particle system
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5156,7 +5156,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -5196,7 +5196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackInterval: 2
   AttackDamage: 1
-  Speed: 1
+  Speed: 3
 --- !u!114 &1512046714080035526
 MonoBehaviour:
   m_ObjectHideFlags: 0

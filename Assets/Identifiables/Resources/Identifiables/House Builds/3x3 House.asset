@@ -17,56 +17,83 @@ MonoBehaviour:
   _placements:
   - Position: {x: -1, y: -1, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: -1, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: -1, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: 0, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: 0, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: 0, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: 1, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: 1, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: -1, y: 1, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: -1, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: -1, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: -1, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: 0, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: 0, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: 0, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: 1, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: 1, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 0, y: 1, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: -1, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: -1, z: 0}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: -1, z: 1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: 0, z: -1}
     PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: 0, z: 0}
-    PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    PlacementSO: {fileID: 11400000, guid: ef6e62a6751384e7faf7c169c1f19a75, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: 0, z: 1}
-    PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    PlacementSO: {fileID: 11400000, guid: ef6e62a6751384e7faf7c169c1f19a75, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: 1, z: -1}
-    PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    PlacementSO: {fileID: 11400000, guid: ed1757d563b054ee6b05520ab5bc48ac, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: 1, z: 0}
-    PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    PlacementSO: {fileID: 11400000, guid: ed1757d563b054ee6b05520ab5bc48ac, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   - Position: {x: 1, y: 1, z: 1}
-    PlacementSO: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}
+    PlacementSO: {fileID: 11400000, guid: ed1757d563b054ee6b05520ab5bc48ac, type: 2}
+    Orientation: {x: 0, y: 0, z: 0}
   _baseBuildingBlock: {fileID: 11400000, guid: 24802f21a22df42c58551e574bdacf04, type: 2}

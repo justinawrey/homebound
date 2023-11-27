@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 889947048273068051}
   m_Layer: 8
   m_Name: Money Magnet
-  m_TagString: Untagged
+  m_TagString: MoneyMagnet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

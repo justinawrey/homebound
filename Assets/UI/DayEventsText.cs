@@ -21,7 +21,7 @@ public class DayEventsText : MonoBehaviour
         _levelUpText.enabled = false;
 
         EventBus.OnDayStart += () => StartCoroutine(AlertRoutine(_startDayText));
-        EventBus.OnDayEnd += () => StartCoroutine(AlertRoutine(_endDayText, SwitchScenes));
+        // EventBus.OnDayEnd += () => StartCoroutine(AlertRoutine(_endDayText, SwitchScenes));
 
         Action unsub = _playerStatsSO.Level.OnChange((_, __) => StartCoroutine(AlertRoutine(_levelUpText)));
         _unsubCbs.Add(unsub);

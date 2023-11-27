@@ -14,6 +14,8 @@ public enum TagName
   FloatingTextContainer,
   Money,
   EnemySpawner,
+  SpawnMarker,
+  MoneyMagnet,
   GhostObject,
 }
 

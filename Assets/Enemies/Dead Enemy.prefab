@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 2391496815075818171}
   - component: {fileID: 1771353505903783043}
   - component: {fileID: 2575381596896601258}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: particle system
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2391496815075818171
 Transform:
   m_ObjectHideFlags: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6014821048367098817}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalRotation: {x: -0.004586497, y: -0.01851055, z: 0.00032231334, w: 0.99981815}
+  m_LocalPosition: {x: -0.02, y: 1.27, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4929006182153808229}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.525, y: -2.122, z: 0.047}
 --- !u!198 &1771353505903783043
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -665,13 +665,13 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 40
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 180, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -751,7 +751,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.21
+      value: 1.2
       mode: 0
       spread: 0
       speed:
@@ -3934,7 +3934,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
@@ -4777,7 +4777,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 321882573794478694, guid: 4f428a8918c559c44b229715a237c4cc, type: 3}
+  - {fileID: 2100000, guid: fa387b067718f4466a533895f35ebee1, type: 2}
+  - {fileID: 2100000, guid: fa387b067718f4466a533895f35ebee1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4819,7 +4820,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4837,9 +4838,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4929006182153808229}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Dead Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4944,6 +4945,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3958168541579874728}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5597290513797439447 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -341236456490938753, guid: 603970f97e50c56488ec3c5a6febd940,
+    type: 3}
+  m_PrefabInstance: {fileID: 3958168541579874728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8309741354441845943 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4198448947861144289, guid: 603970f97e50c56488ec3c5a6febd940,
@@ -4983,4 +4990,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921fd06fccafc42a1a0e11a869427cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 5597290513797439447}
   _parentToDestroy: {fileID: 4929006182153808229}
+  _damageMaterial: {fileID: 2100000, guid: fa387b067718f4466a533895f35ebee1, type: 2}
+  _dissolveMaterial: {fileID: 2100000, guid: 6401ff618ce724aa2bb2c8250ee32be1, type: 2}
+  _flashTime: 0.075
+  _dissolveTime: 1
+  _particleSystem: {fileID: 1771353505903783043}
+  _minEmissionAmount: 2
+  _maxEmissionAmount: 4

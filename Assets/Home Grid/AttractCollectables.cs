@@ -13,13 +13,26 @@ public class AttractCollectables : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ICollectable[] collectables = other.gameObject.GetComponentsInChildren<ICollectable>();
+        MagnetizeInGameObject(other.gameObject);
+    }
+
+    private void MagnetizeInGameObject(GameObject gameObject)
+    {
+        ICollectable[] collectables = gameObject.GetComponentsInChildren<ICollectable>();
         if (collectables.Length <= 0)
         {
             return;
         }
 
-        Magnetize(other.gameObject, collectables);
+        Magnetize(gameObject, collectables);
+    }
+
+    public void MagnetizeAllUnderTransform(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            MagnetizeInGameObject(child.gameObject);
+        }
     }
 
     private void Magnetize(GameObject other, ICollectable[] collectables)

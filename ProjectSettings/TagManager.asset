@@ -16,6 +16,8 @@ TagManager:
   - ScreenSpaceUiContainer
   - VCam
   - FloatingTextContainer
+  - SpawnMarker
+  - MoneyMagnet
   layers:
   - Default
   - TransparentFX
