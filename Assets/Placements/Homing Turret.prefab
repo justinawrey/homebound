@@ -146,6 +146,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5491439508341737858, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 89ce92fe304a54271890aed615f1bbf7,
+        type: 2}
+    - target: {fileID: 5491439508341737858, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491439508341737858, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.data[0]
+      value: 
+      objectReference: {fileID: 5431018543168889331}
+    - target: {fileID: 5491439508341737858, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.data[1]
+      value: 
+      objectReference: {fileID: 3647683293366700798}
+    - target: {fileID: 5491439508341737858, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.data[2]
+      value: 
+      objectReference: {fileID: 784298537703011999}
     - target: {fileID: 8806746805233615814, guid: 121150618c41648ff9dca2a1d70f952c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -168,6 +194,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 784298537703011999}
   m_SourcePrefab: {fileID: 100100000, guid: 121150618c41648ff9dca2a1d70f952c, type: 3}
+--- !u!114 &5431018543168889331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1103912712714385854, guid: 121150618c41648ff9dca2a1d70f952c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4904200454441064525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5886047841372287509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c99aedfb3da44719edb9d3fbd47a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5886047841372287509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1558325765781056088, guid: 121150618c41648ff9dca2a1d70f952c,

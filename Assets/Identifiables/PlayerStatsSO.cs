@@ -20,18 +20,22 @@ public class PlayerStatsSO : IdentifiableSO, IDamageable
 
     // Stats.
     // TODO: this save system... hmm....
-    [SaveData] public PersistedReactive<float> CurrHealth = new PersistedReactive<float>(100);
-    [SaveData] public PersistedReactive<float> TotalHealth = new PersistedReactive<float>(100);
-    [SaveData] public PersistedReactive<int> AccruedLevels = new PersistedReactive<int>(0);
-    [SaveData] public PersistedReactive<int> Level = new PersistedReactive<int>(1);
-    [SaveData] public PersistedReactive<int> CurrExp = new PersistedReactive<int>(0);
-    [SaveData] public PersistedReactive<int> RequiredToNextLevel = new PersistedReactive<int>(10);
-    [SaveData] public PersistedReactive<int> Money = new PersistedReactive<int>(0);
+    public Reactive<float> CurrHealth = new Reactive<float>(100);
+    public Reactive<float> TotalHealth = new Reactive<float>(100);
+    public Reactive<int> AccruedLevels = new Reactive<int>(0);
+    public Reactive<int> Level = new Reactive<int>(1);
+    public Reactive<int> CurrExp = new Reactive<int>(0);
+    public Reactive<int> RequiredToNextLevel = new Reactive<int>(10);
+    public Reactive<int> Money = new Reactive<int>(0);
 
     // "fighting" related stats
     public PlayerStat Damage;
     public PlayerStat Speed;
     public PlayerStat Armor;
+
+    // "meta" related stats
+    public Reactive<int> TotalMoneyAcquired = new Reactive<int>(0);
+    public Reactive<int> TotalEnemiesSlain = new Reactive<int>(0);
 
     public float GetHealth()
     {

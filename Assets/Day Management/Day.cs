@@ -1,9 +1,12 @@
 using System.Collections;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class Day : MonoBehaviour
 {
     [SerializeField] private float _realtimeSecondsPerDay = 30f;
+    [SerializeField] private MMF_Player _feedbacksPlayer;
+    [SerializeField] private DayStats _dayStats;
 
     private void Start()
     {
@@ -12,6 +15,7 @@ public class Day : MonoBehaviour
 
     private IEnumerator DayRoutine()
     {
+        _dayStats.ResetDayStats();
         EventBus.StartDay();
 
         float currSeconds = 0;
@@ -24,5 +28,6 @@ public class Day : MonoBehaviour
         }
 
         EventBus.EndDay();
+        _feedbacksPlayer.PlayFeedbacks();
     }
 }

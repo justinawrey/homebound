@@ -10,7 +10,6 @@ public class DayEventsText : MonoBehaviour
     [SerializeField] private BlinkText _endDayText;
     [SerializeField] private BlinkText _levelUpText;
     [SerializeField] private float _alertDuration = 1f;
-    [SerializeField] private SceneSettingsSO _upgradeSceneSettings;
 
     private List<Action> _unsubCbs = new List<Action>();
 
@@ -20,34 +19,34 @@ public class DayEventsText : MonoBehaviour
         _endDayText.enabled = false;
         _levelUpText.enabled = false;
 
-        EventBus.OnDayStart += () => StartCoroutine(AlertRoutine(_startDayText));
-        // EventBus.OnDayEnd += () => StartCoroutine(AlertRoutine(_endDayText, SwitchScenes));
+        EventBus.OnDayStart += StartDay;
+        EventBus.OnDayEnd += EndDay;
 
         Action unsub = _playerStatsSO.Level.OnChange((_, __) => StartCoroutine(AlertRoutine(_levelUpText)));
         _unsubCbs.Add(unsub);
     }
 
-    private void SwitchScenes()
-    {
-        _upgradeSceneSettings.Load();
-    }
-
     private void OnDestroy()
     {
         _unsubCbs.ForEach(unsub => unsub());
-        EventBus.OnDayStart -= () => StartCoroutine(AlertRoutine(_startDayText));
-        EventBus.OnDayEnd -= () => StartCoroutine(AlertRoutine(_endDayText));
+        EventBus.OnDayStart -= StartDay;
+        EventBus.OnDayEnd -= EndDay;
     }
 
-    private IEnumerator AlertRoutine(BlinkText text, Action cb = null)
+    private void StartDay()
+    {
+        StartCoroutine(AlertRoutine(_startDayText));
+    }
+
+    private void EndDay()
+    {
+        StartCoroutine(AlertRoutine(_endDayText));
+    }
+
+    private IEnumerator AlertRoutine(BlinkText text)
     {
         text.enabled = true;
         yield return new WaitForSeconds(_alertDuration);
         text.enabled = false;
-
-        if (cb != null)
-        {
-            cb();
-        }
     }
 }

@@ -15,6 +15,14 @@ public class SceneSettingsSO : IdentifiableSO
   [SerializeField] private SceneReference _sceneReference;
   [SerializeField] private InputActionAsset _inputActionAsset;
 
+  public string SceneName
+  {
+    get
+    {
+      return _sceneReference.Name;
+    }
+  }
+
   public bool IsActiveScene
   {
     get

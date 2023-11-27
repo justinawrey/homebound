@@ -29,7 +29,7 @@ public class HomeGrid : MonoBehaviour
             Placement placement = pair.Value;
 
             GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.Quaternion, placement.PlacementSO);
-            ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
+            // ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
         }
     }
 
@@ -38,19 +38,19 @@ public class HomeGrid : MonoBehaviour
         return Instantiate(placementSO.Prefab, _placementContainer.TransformPoint(position), quaternion, _placementContainer);
     }
 
-    private void ApplyModsOnPlacement(GameObject placement, List<ModSO> mods)
-    {
-        ModController modController = placement.GetComponent<ModController>();
-        if (modController == null)
-        {
-            return;
-        }
+    // private void ApplyModsOnPlacement(GameObject placement, List<ModSO> mods)
+    // {
+    //     ModController modController = placement.GetComponent<ModController>();
+    //     if (modController == null)
+    //     {
+    //         return;
+    //     }
 
-        foreach (ModSO mod in mods)
-        {
-            modController.Apply(mod);
-        }
-    }
+    //     foreach (ModSO mod in mods)
+    //     {
+    //         modController.Apply(mod);
+    //     }
+    // }
 
     private void DestroyChildrenInEditor()
     {

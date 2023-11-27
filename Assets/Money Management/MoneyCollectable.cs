@@ -23,6 +23,8 @@ public class MoneyCollectable : MonoBehaviour, ICollectable
 
     public void OnCollectEnd()
     {
-        _playerStatsSO.Money.Value += _moneyValue.GetValue();
+        int value = _moneyValue.GetValue();
+        _playerStatsSO.Money.Value += value;
+        _playerStatsSO.TotalMoneyAcquired.Value += value;
     }
 }

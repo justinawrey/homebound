@@ -1,21 +1,34 @@
+using System.Collections;
 using UnityEngine;
 
 public class MagnetizeAllMoney : MonoBehaviour
 {
-    private AttractCollectables _attractCollectablesComponent;
+    // [SerializeField] private float _delay = 1f;
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     EventBus.OnDayEnd += MagnetizeAll;
+    // }
+
+    // private void OnDestroy()
+    // {
+    //     EventBus.OnDayEnd -= MagnetizeAll;
+    // }
+
+    private void OnEnable()
     {
-        EventBus.OnDayEnd += MagnetizeAll;
+        AttractCollectables attractCollectables = TagUtils.FindWithTag(TagName.MoneyMagnet).GetComponent<AttractCollectables>();
+        attractCollectables.MagnetizeAllUnderTransform(transform);
     }
 
-    private void Start()
-    {
-        _attractCollectablesComponent = TagUtils.FindWithTag(TagName.MoneyMagnet).GetComponent<AttractCollectables>();
-    }
+    // private void ExecuteMagnizeRoutine()
+    // {
+    //     StartCoroutine(MagnetizeRoutine());
+    // }
 
-    private void MagnetizeAll()
-    {
-        _attractCollectablesComponent.MagnetizeAllUnderTransform(transform);
-    }
+    // private IEnumerator MagnetizeRoutine()
+    // {
+    //     yield return new WaitForSeconds(_delay);
+    //     MagnetizeAll();
+    // }
 }
