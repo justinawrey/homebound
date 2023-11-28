@@ -4422,13 +4422,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 6693529725641773669, guid: 73fb4f1705ff44c858eb7c37cd2251d2,
     type: 3}
-  _spawnInterval: 0.1
+  _fallbackSpawnInterval: 1
   _spawnSphereMin: 10
   _spawnSphereMax: 40
   _enemiesContainer: {fileID: 225926162}
   _spawnMarkerDuration: 2
   _spawnMarkerPrefab: {fileID: 840156899701563879, guid: daec5355adb4a4d079611c04af653201,
     type: 3}
+  _playerStatsSO: {fileID: 11400000, guid: 9432f8ce5824347d1918d61801c3aeef, type: 2}
   _drawGizmos: 0
 --- !u!4 &826137835
 Transform:
@@ -10923,7 +10924,7 @@ PrefabInstance:
     - target: {fileID: 1103703665876422042, guid: baafb7b1efead4b6ca5d73c1ff67b464,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103703665876422042, guid: baafb7b1efead4b6ca5d73c1ff67b464,
         type: 3}
@@ -10948,12 +10949,12 @@ PrefabInstance:
     - target: {fileID: 1103703665876422042, guid: baafb7b1efead4b6ca5d73c1ff67b464,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 149.4
+      value: 149
       objectReference: {fileID: 0}
     - target: {fileID: 1103703665876422042, guid: baafb7b1efead4b6ca5d73c1ff67b464,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45
+      value: -43
       objectReference: {fileID: 0}
     - target: {fileID: 1103703665876422042, guid: baafb7b1efead4b6ca5d73c1ff67b464,
         type: 3}

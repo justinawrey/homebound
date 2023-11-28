@@ -52,4 +52,9 @@ public class PlayerStatsSO : IdentifiableSO, IDamageable
     {
         CurrHealth.Value = to;
     }
+
+    public bool GetCurrDaySettingsSO(out DaySettingsSO result)
+    {
+        return ResourceManager.GetByName($"day-{CurrentDay.Value}", out result);
+    }
 }

@@ -16,18 +16,42 @@ public static class ResourceManager
     }
   }
 
-  public static T GetById<T>(int id) where T : IdentifiableSO
+  public static bool GetById<T>(int id, out T result) where T : IdentifiableSO
   {
-    return _identifiables.Values.OfType<T>().Where(identifiable => identifiable.Id == id).First();
+    var list = _identifiables.Values.OfType<T>().Where(identifiable => identifiable.Id == id);
+    if (list.Count() <= 0)
+    {
+      result = null;
+      return false;
+    }
+
+    result = list.First();
+    return true;
   }
 
-  public static T GetByName<T>(string name) where T : IdentifiableSO
+  public static bool GetByName<T>(string name, out T result) where T : IdentifiableSO
   {
-    return _identifiables.Values.OfType<T>().Where(identifiable => identifiable.Name == name).First();
+    var list = _identifiables.Values.OfType<T>().Where(identifiable => identifiable.Name == name);
+    if (list.Count() <= 0)
+    {
+      result = null;
+      return false;
+    }
+
+    result = list.First();
+    return true;
   }
 
-  public static T[] GetAllOfType<T>() where T : IdentifiableSO
+  public static bool GetAllOfType<T>(out T[] results) where T : IdentifiableSO
   {
-    return _identifiables.Values.OfType<T>().ToArray();
+    var list = _identifiables.Values.OfType<T>();
+    if (list.Count() <= 0)
+    {
+      results = null;
+      return false;
+    }
+
+    results = list.ToArray();
+    return true;
   }
 }

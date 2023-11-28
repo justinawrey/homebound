@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyPrefab;
-    [SerializeField] private float _spawnInterval = 3f;
+    [SerializeField] private float _fallbackSpawnInterval = 1f;
     [SerializeField] private float _spawnSphereMin = 5f;
     [SerializeField] private float _spawnSphereMax = 8f;
     [SerializeField] private Transform _enemiesContainer;
     [SerializeField] private float _spawnMarkerDuration = 2f;
     [SerializeField] private GameObject _spawnMarkerPrefab;
+    [SerializeField] private PlayerStatsSO _playerStatsSO;
 
     [Header("Debug Options")]
     [SerializeField] private bool _drawGizmos = false;
@@ -60,6 +61,14 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator PeriodicSpawnRoutine()
     {
+        // get the spawn rate
+        DaySettingsSO daySettingsSO;
+        float spawnInterval = _fallbackSpawnInterval;
+        if (_playerStatsSO.GetCurrDaySettingsSO(out daySettingsSO))
+        {
+            spawnInterval = daySettingsSO.SpawnInterval;
+        }
+
         while (true)
         {
             Vector3 spawnPos;
@@ -69,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             StartCoroutine(SpawnEnemyRoutine(spawnPos));
-            yield return new WaitForSeconds(_spawnInterval);
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 

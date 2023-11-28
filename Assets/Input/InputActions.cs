@@ -30,9 +30,15 @@ public static class CustomInputManager
   [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
   private static void BeforeSceneLoad()
   {
+    SceneSettingsSO[] sceneSettingsSOs;
+    if (!ResourceManager.GetAllOfType(out sceneSettingsSOs))
+    {
+      return;
+    }
+
     // Figure out which scene is active...
     bool foundActiveScene = false;
-    foreach (SceneSettingsSO sceneSettings in ResourceManager.GetAllOfType<SceneSettingsSO>())
+    foreach (SceneSettingsSO sceneSettings in sceneSettingsSOs)
     {
       if (!sceneSettings.IsActiveScene)
       {
