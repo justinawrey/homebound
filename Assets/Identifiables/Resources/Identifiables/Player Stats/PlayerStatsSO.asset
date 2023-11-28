@@ -16,19 +16,19 @@ MonoBehaviour:
   Description: 
   HouseBuild: {fileID: 11400000, guid: 070b49e036fb74daea0127d5e8d3689f, type: 2}
   CurrHealth:
-    _val: 100
+    _val: 75
   TotalHealth:
     _val: 100
   AccruedLevels:
-    _val: 2
+    _val: 27
   Level:
-    _val: 3
+    _val: 28
   CurrExp:
-    _val: 22
+    _val: 234
   RequiredToNextLevel:
-    _val: 30
+    _val: 280
   Money:
-    _val: 70
+    _val: 5038
   Damage:
     Name: DMG
     Amount:
@@ -42,8 +42,8 @@ MonoBehaviour:
     Amount:
       _val: 2
   TotalMoneyAcquired:
-    _val: 70
+    _val: 5038
   TotalEnemiesSlain:
-    _val: 26
+    _val: 2007
   CurrentDay:
-    _val: 4
+    _val: 3

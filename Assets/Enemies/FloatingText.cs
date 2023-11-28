@@ -12,6 +12,6 @@ public class FloatingText : MonoBehaviour, IUiInitializer
 
     public void Initialize(GameObject gameObject)
     {
-        _textComponent.text = gameObject.name;
+        _textComponent.text = $"{gameObject.name}";
     }
 }

@@ -29,6 +29,7 @@ public class GhostObject : MonoBehaviour
 
             Destroy(component);
         }
+        instantiated.SetActive(false);
     }
 
     public void StartPlacement(GameObject gameObject)

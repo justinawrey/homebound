@@ -9,32 +9,51 @@ public class PlaceAdjacentToBuildingBlock : MonoBehaviour, IHoverable, ISelectab
   [SerializeField] private PlayerStatsSO _playerStatsSO;
 
   private GhostObject _ghostObject;
-  private Vector3Int _cachedNormal;
+  private Transform _placementContainer;
+  private Vector3 _cachedNormal;
 
   private void Start()
   {
     _ghostObject = TagUtils.FindWithTag(TagName.GhostObject).GetComponent<GhostObject>();
-    EventBus.OnHouseRotationEnd += Snap;
+
+    // TODO: not the greatest but fine
+    _placementContainer = TagUtils.FindWithTag(TagName.House).transform.GetChild(0);
+    // EventBus.OnHouseRotationEnd += Snap;
   }
 
-  private void OnDestroy()
-  {
-    EventBus.OnHouseRotationEnd -= Snap;
-  }
+  // private void OnDestroy()
+  // {
+  // EventBus.OnHouseRotationEnd -= Snap;
+  // }
 
-  private void Snap()
+  // private void Snap()
+  // {
+  //   MoveGhostObject(_cachedNormal);
+  // }
+
+  private bool IsValidNormal(Vector3 localSpaceNormal)
   {
-    MoveGhostObject(_cachedNormal);
+    // print(localSpaceNormal);
+    // print(Vector3.forward);
+    // return localSpaceNormal.Approximately(Vector3.forward);
+    return localSpaceNormal == Vector3.forward;
   }
 
   public void OnHoverEnter(RaycastHit hit)
   {
-    Vector3 dir = hit.normal.normalized;
-    _cachedNormal = Vector3Int.RoundToInt(dir);
+    _cachedNormal = hit.normal.normalized;
+
+    // only allow placing ghost object in the local space forward direction
+    if (!IsValidNormal(_placementContainer.InverseTransformDirection(_cachedNormal)))
+    {
+      return;
+    }
+
+    // _cachedNormal = Vector3Int.RoundToInt(dir);
     MoveGhostObject(_cachedNormal);
   }
 
-  private void MoveGhostObject(Vector3Int normal)
+  private void MoveGhostObject(Vector3 normal)
   {
     Vector3 desiredPosWorld = transform.position + normal;
     Vector3Int desiredPosLocal = Vector3Int.RoundToInt(transform.parent.InverseTransformPoint(desiredPosWorld));
@@ -56,39 +75,6 @@ public class PlaceAdjacentToBuildingBlock : MonoBehaviour, IHoverable, ISelectab
   public void OnHoverExit(RaycastHit hit)
   {
     _ghostObject.HideGhostObject();
-  }
-
-  // its not great that im raycasting again, but this is hacktober baby
-  // when the normal dir changes, treat that as a ghost object movement as well
-  private void Update()
-  {
-    Vector2 rawMousePos = Mouse.current.position.ReadValue();
-    Vector2 remappedMousePos = math.remap(
-        Vector2.zero,
-        new Vector2(Screen.width, Screen.height),
-        Vector2.zero,
-        ScreenUtils.ScreenResolution,
-        rawMousePos
-    );
-
-    Ray ray = Camera.main.ScreenPointToRay(remappedMousePos);
-    RaycastHit hit;
-    if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerUtils.GetMask(LayerName.BuildingBlocks)))
-    {
-      // only do this for this game object!
-      if (hit.collider.gameObject.GetInstanceID() != gameObject.GetInstanceID())
-      {
-        return;
-      }
-
-      Vector3Int roundedNormal = Vector3Int.RoundToInt(hit.normal.normalized);
-      if (roundedNormal != _cachedNormal)
-      {
-        // we moved to a new face!
-        _cachedNormal = roundedNormal;
-        MoveGhostObject(_cachedNormal);
-      }
-    }
   }
 
   public void OnSelect(RaycastHit hit)

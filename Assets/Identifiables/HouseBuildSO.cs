@@ -8,33 +8,34 @@ public struct SerializablePlacement
 {
   public Vector3Int Position;
   public PlacementSO PlacementSO;
-  public Vector3 Orientation;
+  // public Vector3 Orientation;
 
   public SerializablePlacement(int i, int j, int k, PlacementSO placementSO)
   {
     Position = new Vector3Int(i, j, k);
     PlacementSO = placementSO;
-    Orientation = Vector3.up;
+    // Orientation = Vector3.up;
   }
 }
 
 public class Placement
 {
   public PlacementSO PlacementSO;
-  public Vector3 Orientation;
+  // public Vector3 Orientation;
 
-  public Quaternion Quaternion
-  {
-    get
-    {
-      return Quaternion.Euler(Orientation);
-    }
-  }
+  // public Quaternion Quaternion
+  // {
+  //   get
+  //   {
+  //     return Quaternion.Euler(Orientation);
+  //   }
+  // }
 
-  public Placement(PlacementSO placementSO, Vector3 orientation)
+  // public Placement(PlacementSO placementSO, Vector3 orientation)
+  public Placement(PlacementSO placementSO)
   {
     PlacementSO = placementSO;
-    Orientation = orientation;
+    // Orientation = orientation;
   }
 }
 
@@ -54,7 +55,8 @@ public class HouseBuildSO : IdentifiableSO
 
     foreach (SerializablePlacement placement in _placements)
     {
-      Placements.Add(placement.Position, new Placement(placement.PlacementSO, placement.Orientation));
+      // Placements.Add(placement.Position, new Placement(placement.PlacementSO, placement.Orientation));
+      Placements.Add(placement.Position, new Placement(placement.PlacementSO));
     }
   }
 

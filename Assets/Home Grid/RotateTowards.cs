@@ -20,7 +20,7 @@ public class RotateTowards : MonoBehaviour
 
   private void Update()
   {
-    Vector3 targetDirection = transform.position - GetRaycastPoint();
+    Vector3 targetDirection = GetRaycastPoint() - transform.position;
     Quaternion quaternion;
 
     // Get rid of annoying error message

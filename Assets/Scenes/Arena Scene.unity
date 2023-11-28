@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552fca810c4a6411fbe664164ebe4795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _realtimeSecondsPerDay: 5
+  _realtimeSecondsPerDay: 30
   _feedbacksPlayer: {fileID: 1813565028}
   _dayStats: {fileID: 1548636211}
 --- !u!1001 &361095371
@@ -3884,7 +3884,7 @@ PrefabInstance:
     - target: {fileID: 3204161914829948076, guid: b28d0e97891b440a6a7841c52290d6ae,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3204161914829948076, guid: b28d0e97891b440a6a7841c52290d6ae,
         type: 3}
@@ -3894,7 +3894,7 @@ PrefabInstance:
     - target: {fileID: 3204161914829948076, guid: b28d0e97891b440a6a7841c52290d6ae,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204161914829948076, guid: b28d0e97891b440a6a7841c52290d6ae,
         type: 3}
@@ -3909,7 +3909,7 @@ PrefabInstance:
     - target: {fileID: 3204161914829948076, guid: b28d0e97891b440a6a7841c52290d6ae,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3204161914829948076, guid: b28d0e97891b440a6a7841c52290d6ae,
         type: 3}
@@ -4422,7 +4422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 6693529725641773669, guid: 73fb4f1705ff44c858eb7c37cd2251d2,
     type: 3}
-  _fallbackSpawnInterval: 1
+  _fallbackSpawnInterval: 0.3
   _spawnSphereMin: 10
   _spawnSphereMax: 40
   _enemiesContainer: {fileID: 225926162}

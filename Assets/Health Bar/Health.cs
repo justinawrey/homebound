@@ -31,6 +31,8 @@ public class Health : MonoBehaviour
     private IDamageReceiver[] _damageReceivers;
     private IDeathReceiver[] _deathReceivers;
 
+    private bool _dead = false;
+
     private void Awake()
     {
         // TODO: this isn't pretty... idk if there is a smarter way to do this
@@ -66,9 +68,17 @@ public class Health : MonoBehaviour
     // returns true if health is 0 after decrement
     public bool DecrementHealth(float amount, GameObject damageDealer)
     {
+        // in case this is called multiple times in the same frame, (e.g.) lots of deadly damage!
+        // make sure we dont double proc the death receivers
+        if (_dead)
+        {
+            return true;
+        }
+
         _damageable.SetHealth(_damageable.GetHealth() - amount);
         if (_damageable.GetHealth() <= 0)
         {
+            _dead = true;
             _damageable.SetHealth(0);
             ProcessDeathReceivers(damageDealer);
             return true;

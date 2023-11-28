@@ -12,7 +12,8 @@ public class HomeGrid : MonoBehaviour
     private void Start()
     {
         InstantiateFromHouseBuildSO();
-        _unsub = _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement.Quaternion, placement.PlacementSO));
+        // _unsub = _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement.Quaternion, placement.PlacementSO));
+        _unsub = _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement.PlacementSO));
     }
 
     private void OnDestroy()
@@ -36,14 +37,17 @@ public class HomeGrid : MonoBehaviour
             Vector3Int position = pair.Key;
             Placement placement = pair.Value;
 
-            GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.Quaternion, placement.PlacementSO);
+            // GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.Quaternion, placement.PlacementSO);
+            GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.PlacementSO);
             ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
         }
     }
 
-    private GameObject InstantiateInPlacementContainer(Vector3Int position, Quaternion quaternion, PlacementSO placementSO)
+    // private GameObject InstantiateInPlacementContainer(Vector3Int position, Quaternion quaternion, PlacementSO placementSO)
+    private GameObject InstantiateInPlacementContainer(Vector3Int position, PlacementSO placementSO)
     {
-        return Instantiate(placementSO.Prefab, _placementContainer.TransformPoint(position), quaternion, _placementContainer);
+        // TODO: this rotation nonsense is janky but ok
+        return Instantiate(placementSO.Prefab, _placementContainer.TransformPoint(position), _placementContainer.parent.transform.rotation, _placementContainer);
     }
 
     private void ApplyModsOnPlacement(GameObject placement, List<ModSO> mods)

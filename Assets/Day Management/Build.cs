@@ -45,7 +45,8 @@ public class Build : MonoBehaviour
 
       // now place! we need to place in local space
       Vector3 localPlacementPos = _placementContainer.InverseTransformPoint(_ghostObject.GetPrevPlacedPosition());
-      Placement placement = new Placement(_placementSO, _ghostObject.GetPrevPlacedRotation());
+      // Placement placement = new Placement(_placementSO, _ghostObject.GetPrevPlacedRotation());
+      Placement placement = new Placement(_placementSO);
       _playerStatsSO.HouseBuild.Placements.Add(Vector3Int.RoundToInt(localPlacementPos), placement);
     }
   }
