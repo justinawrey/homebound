@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class TargetEnemies : MonoBehaviour
@@ -76,7 +74,9 @@ public class TargetEnemies : MonoBehaviour
             Health health;
             if (IsTargetable(gameObject, out health))
             {
+                print("found targetable");
                 GameObject bullet = Instantiate(_bulletPrefab, _bulletOrigin.position, Quaternion.identity, _bulletsContainer.transform);
+                print(bullet);
                 bullet.GetComponent<BulletStats>().Initialize(_baseStats);
                 bullet.GetComponent<Homing>().Initialize(health);
                 found++;

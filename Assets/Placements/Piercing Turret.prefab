@@ -89,6 +89,21 @@ PrefabInstance:
       propertyPath: _arenaOnlyScripts.Array.data[2]
       value: 
       objectReference: {fileID: 8708479148501135914}
+    - target: {fileID: 7756502853525524357, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756502853525524357, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.data[2]
+      value: 
+      objectReference: {fileID: 4375382035446043385}
+    - target: {fileID: 7756502853525524357, guid: 121150618c41648ff9dca2a1d70f952c,
+        type: 3}
+      propertyPath: _arenaOnlyScripts.Array.data[3]
+      value: 
+      objectReference: {fileID: 8708479148501135914}
     - target: {fileID: 8806746805233615814, guid: 121150618c41648ff9dca2a1d70f952c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

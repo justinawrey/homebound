@@ -36,6 +36,7 @@ public class PlayerStatsSO : IdentifiableSO, IDamageable
     // "meta" related stats
     public Reactive<int> TotalMoneyAcquired = new Reactive<int>(0);
     public Reactive<int> TotalEnemiesSlain = new Reactive<int>(0);
+    public Reactive<int> CurrentDay = new Reactive<int>(1);
 
     public float GetHealth()
     {

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Image _marker;
+    [SerializeField] private float _rightOffset = 5f;
 
     private RectTransform _markerRt;
     private float _progressBarWidth;
@@ -32,7 +33,7 @@ public class ProgressBar : MonoBehaviour
 
     public void SetProgress(float percent)
     {
-        float xPos = Mathf.Lerp(0, _progressBarWidth, percent);
+        float xPos = Mathf.Lerp(0, _progressBarWidth - _rightOffset, percent);
         _markerRt.anchoredPosition = new Vector2(xPos, _markerRt.anchoredPosition.y);
     }
 }

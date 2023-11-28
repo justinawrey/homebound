@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,17 @@ public class HomeGrid : MonoBehaviour
     [SerializeField] private PlayerStatsSO _playerStatsSO;
     [SerializeField] private Transform _placementContainer;
 
+    private Action _unsub;
+
     private void Start()
     {
         InstantiateFromHouseBuildSO();
-        _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement.Quaternion, placement.PlacementSO));
+        _unsub = _playerStatsSO.HouseBuild.Placements.OnAdd((pos, placement) => InstantiateInPlacementContainer(pos, placement.Quaternion, placement.PlacementSO));
+    }
+
+    private void OnDestroy()
+    {
+        _unsub();
     }
 
     [ContextMenu("Init 3x3 on HouseBuildSO")]
@@ -29,7 +37,7 @@ public class HomeGrid : MonoBehaviour
             Placement placement = pair.Value;
 
             GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.Quaternion, placement.PlacementSO);
-            // ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
+            ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
         }
     }
 
@@ -38,19 +46,19 @@ public class HomeGrid : MonoBehaviour
         return Instantiate(placementSO.Prefab, _placementContainer.TransformPoint(position), quaternion, _placementContainer);
     }
 
-    // private void ApplyModsOnPlacement(GameObject placement, List<ModSO> mods)
-    // {
-    //     ModController modController = placement.GetComponent<ModController>();
-    //     if (modController == null)
-    //     {
-    //         return;
-    //     }
+    private void ApplyModsOnPlacement(GameObject placement, List<ModSO> mods)
+    {
+        ModController modController = placement.GetComponent<ModController>();
+        if (modController == null)
+        {
+            return;
+        }
 
-    //     foreach (ModSO mod in mods)
-    //     {
-    //         modController.Apply(mod);
-    //     }
-    // }
+        foreach (ModSO mod in mods)
+        {
+            modController.Apply(mod);
+        }
+    }
 
     private void DestroyChildrenInEditor()
     {

@@ -49,4 +49,10 @@ public class Build : MonoBehaviour
       _playerStatsSO.HouseBuild.Placements.Add(Vector3Int.RoundToInt(localPlacementPos), placement);
     }
   }
+
+  // TODO: this needs a better home.
+  public void IncrementDay()
+  {
+    _playerStatsSO.CurrentDay.Value += 1;
+  }
 }

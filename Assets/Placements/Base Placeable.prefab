@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 3946693740661290125}
   - component: {fileID: 8806746805233615814}
   - component: {fileID: 4881853639564566657}
+  - component: {fileID: 7756502853525524357}
   - component: {fileID: 1103912712714385854}
+  - component: {fileID: -7468840198254778300}
   m_Layer: 0
   m_Name: Base Placeable
   m_TagString: Untagged
@@ -106,6 +108,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558325765781056088}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7756502853525524357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558325765781056088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27968eb1c1464403eb09b28db3b460a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arenaScene: {fileID: 11400000, guid: 89ce92fe304a54271890aed615f1bbf7, type: 2}
+  _arenaOnlyScripts:
+  - {fileID: 1103912712714385854}
+  - {fileID: -7468840198254778300}
 --- !u!114 &1103912712714385854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,3 +136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c99aedfb3da44719edb9d3fbd47a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7468840198254778300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558325765781056088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ab58ec60eb345ab93ada38982a0285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelUpMods: []

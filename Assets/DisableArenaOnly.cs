@@ -12,7 +12,7 @@ public class DisableArenaOnly : MonoBehaviour
         bool arenaSceneActive = SceneManager.GetActiveScene().name == _arenaScene.SceneName;
         if (!arenaSceneActive)
         {
-            _arenaOnlyScripts.ForEach(script => script.enabled = false);
+            _arenaOnlyScripts.ForEach(script => Destroy(script));
         }
     }
 }
