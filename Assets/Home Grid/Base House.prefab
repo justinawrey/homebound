@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7b871e371cd4b29a817a5865118d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 5
+  _playerStatsSO: {fileID: 11400000, guid: 9432f8ce5824347d1918d61801c3aeef, type: 2}
   _acceleration: 5
   _deceleration: 5
 --- !u!114 &1519432613401231583
@@ -572,6 +572,7 @@ MonoBehaviour:
   _screenShakeTime: 0.5
   _freezeFrameTime: 0.15
   _mmPlayer: {fileID: 7481299426918321469}
+  _playerStatsSO: {fileID: 11400000, guid: 9432f8ce5824347d1918d61801c3aeef, type: 2}
 --- !u!114 &6560787708847777666
 MonoBehaviour:
   m_ObjectHideFlags: 0

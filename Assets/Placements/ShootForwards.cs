@@ -19,7 +19,7 @@ public class ShootForwards : MonoBehaviour
     private void Update()
     {
         _counter += Time.deltaTime;
-        if (_counter >= _stats.FireInterval)
+        if (_counter >= _stats.ActualFireInterval())
         {
             Fire();
             _counter = 0;

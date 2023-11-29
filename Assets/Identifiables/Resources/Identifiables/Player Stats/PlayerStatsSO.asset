@@ -16,34 +16,34 @@ MonoBehaviour:
   Description: 
   HouseBuild: {fileID: 11400000, guid: 070b49e036fb74daea0127d5e8d3689f, type: 2}
   CurrHealth:
-    _val: 75
+    _val: 49
   TotalHealth:
     _val: 100
   AccruedLevels:
-    _val: 27
+    _val: 0
   Level:
-    _val: 28
+    _val: 1
   CurrExp:
-    _val: 234
+    _val: 0
   RequiredToNextLevel:
-    _val: 280
+    _val: 10
   Money:
-    _val: 5038
+    _val: 0
   Damage:
     Name: DMG
     Amount:
-      _val: 5
+      _val: 1
   Speed:
     Name: SPEED
     Amount:
-      _val: 3
+      _val: 5
   Armor:
     Name: ARMOR
     Amount:
       _val: 2
   TotalMoneyAcquired:
-    _val: 5038
+    _val: 0
   TotalEnemiesSlain:
-    _val: 2007
+    _val: 0
   CurrentDay:
-    _val: 3
+    _val: 1

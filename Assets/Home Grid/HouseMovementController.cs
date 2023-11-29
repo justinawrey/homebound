@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class HouseMovementController : MonoBehaviour
 {
     // Parameters
-    [SerializeField] private float _maxSpeed;
+    [SerializeField] private PlayerStatsSO _playerStatsSO;
     [SerializeField] private float _acceleration;
     [SerializeField] private float _deceleration;
 
@@ -44,7 +44,7 @@ public class HouseMovementController : MonoBehaviour
 
     private float CalculateXMovementForce()
     {
-        float targetSpeed = Motion.x * _maxSpeed;
+        float targetSpeed = Motion.x * _playerStatsSO.Speed.Amount.Value;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _acceleration : _deceleration;
         float speedDiff = targetSpeed - _rb.velocity.x;
         float movement = speedDiff * accelRate;
@@ -54,7 +54,7 @@ public class HouseMovementController : MonoBehaviour
 
     private float CalculateZMovementForce()
     {
-        float targetSpeed = Motion.z * _maxSpeed;
+        float targetSpeed = Motion.z * _playerStatsSO.Speed.Amount.Value;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _acceleration : _deceleration;
         float speedDiff = targetSpeed - _rb.velocity.z;
         float movement = speedDiff * accelRate;

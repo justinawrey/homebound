@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IDamageDealer
 {
-    public void DealDamage(Health health);
+    public void DealDamage(Health health, float armorVal);
 }
 
 public class TakeContactDamage : MonoBehaviour
@@ -16,6 +16,7 @@ public class TakeContactDamage : MonoBehaviour
     [SerializeField] private float _screenShakeTime = 0.1f;
     [SerializeField] private float _freezeFrameTime = 0.1f;
     [SerializeField] private MMF_Player _mmPlayer;
+    [SerializeField] private PlayerStatsSO _playerStatsSO;
 
     private Health _health;
     private bool _invulnerable = false;
@@ -59,7 +60,7 @@ public class TakeContactDamage : MonoBehaviour
 
         foreach (IDamageDealer dealer in dealers)
         {
-            dealer.DealDamage(_health);
+            dealer.DealDamage(_health, _playerStatsSO.Armor.Amount.Value);
         }
 
         _mmPlayer.PlayFeedbacks();

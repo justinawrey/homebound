@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// transient, lives only the life of a bullet
 public class BulletStats : MonoBehaviour
 {
     [HideInInspector] public float Speed = 1f;
@@ -8,8 +9,8 @@ public class BulletStats : MonoBehaviour
 
     public void Initialize(BaseStats stats)
     {
-        Speed = stats.Speed;
-        Damage = stats.Damage;
-        Lifetime = stats.Lifetime;
+        Speed = stats.ActualSpeed();
+        Damage = stats.ActualDamage();
+        Lifetime = stats.ActualLifetime();
     }
 }

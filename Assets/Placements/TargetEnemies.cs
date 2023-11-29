@@ -42,7 +42,7 @@ public class TargetEnemies : MonoBehaviour
     private void Update()
     {
         _timeUntilNextFire += Time.deltaTime;
-        if (_timeUntilNextFire >= _baseStats.FireInterval)
+        if (_timeUntilNextFire >= _baseStats.ActualFireInterval())
         {
             Fire();
             _timeUntilNextFire = 0;
