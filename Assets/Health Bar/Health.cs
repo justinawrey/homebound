@@ -111,4 +111,9 @@ public class Health : MonoBehaviour
             deathReceiver.OnDeath(damageDealer);
         }
     }
+
+    public float GetCurrPercentHealth()
+    {
+        return _damageable.GetHealth() / _damageable.GetTotalHealth();
+    }
 }

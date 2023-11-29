@@ -16,5 +16,4 @@ MonoBehaviour:
   Description: 
   Prefab: {fileID: 4581713954875785961, guid: 719af7403b34248ec9bea257f360e422, type: 3}
   Rotation: {x: 0, y: 0, z: 0, w: 1}
-  Mods:
-  - {fileID: 11400000, guid: 7d81dfc7327f04f80a352b6eece0e7b8, type: 2}
+  Mods: []
