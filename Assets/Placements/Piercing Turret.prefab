@@ -176,5 +176,5 @@ MonoBehaviour:
   _playerStatsSO: {fileID: 11400000, guid: 9432f8ce5824347d1918d61801c3aeef, type: 2}
   Speed: 5
   Damage: 1
-  FireInterval: 0.5
+  FireInterval: 1
   Lifetime: 5

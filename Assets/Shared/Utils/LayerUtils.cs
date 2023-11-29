@@ -4,7 +4,8 @@ using UnityEngine;
 public enum LayerName
 {
   BuildingBlocks,
-  DamageDealer
+  DamageDealer,
+  Hoverable,
 }
 
 public class LayerUtils

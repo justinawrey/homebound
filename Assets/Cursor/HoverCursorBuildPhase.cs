@@ -153,7 +153,7 @@ public class HoverCursorBuildPhase : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(remappedMousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerUtils.GetMask(LayerName.BuildingBlocks)))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerUtils.GetMask(LayerName.Hoverable)))
         {
             _activeRaycastHit = hit;
             _hoverObject.Value = hit.collider.gameObject;

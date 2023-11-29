@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783809e7656ce49309b1e7605673724d, type: 3}
+  m_Name: Increase Fire Interval Horz
+  m_EditorClassIdentifier: 
+  Name: 
+  Description: 
+  Prefab: {fileID: 7887708868408788687, guid: 73e6c6c78477f48f5bbcd3811e3e0ba4, type: 3}
+  Rotation: {x: 0, y: 0, z: 0, w: 1}
+  Mods: []
+  SpatialEffects:
+  - Offset: {x: -1, y: 0}
+    Mods:
+    - {fileID: 11400000, guid: edebacf77607546dcb4ddcb1ea8554cc, type: 2}
+  - Offset: {x: 1, y: 0}
+    Mods:
+    - {fileID: 11400000, guid: edebacf77607546dcb4ddcb1ea8554cc, type: 2}

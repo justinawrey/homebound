@@ -17,4 +17,13 @@ public class ModController : MonoBehaviour
     _appliedMods.Add(mod);
     mod.Apply(gameObject);
   }
+
+  [ContextMenu("Print mods")]
+  public void PrintMods()
+  {
+    foreach (var modSO in _appliedMods)
+    {
+      print(modSO.Name);
+    }
+  }
 }

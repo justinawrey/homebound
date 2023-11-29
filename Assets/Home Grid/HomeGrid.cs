@@ -1,6 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+public class StagedPlacement
+{
+    public GameObject GameObject;
+    public List<ModSO> Mods;
+
+    public StagedPlacement(GameObject gameObject, List<ModSO> mods)
+    {
+        GameObject = gameObject;
+        Mods = mods;
+    }
+}
 
 public class HomeGrid : MonoBehaviour
 {
@@ -32,6 +45,9 @@ public class HomeGrid : MonoBehaviour
     {
         DestroyChildrenInEditor();
 
+        Dictionary<Vector3Int, StagedPlacement> stagedPlacements = new Dictionary<Vector3Int, StagedPlacement>();
+
+        // Instantiate all the placements, and add them to a dictionary with their mods and their positiosn
         foreach (KeyValuePair<Vector3Int, Placement> pair in _playerStatsSO.HouseBuild.Placements)
         {
             Vector3Int position = pair.Key;
@@ -39,7 +55,47 @@ public class HomeGrid : MonoBehaviour
 
             // GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.Quaternion, placement.PlacementSO);
             GameObject instantiatedPlacement = InstantiateInPlacementContainer(position, placement.PlacementSO);
-            ApplyModsOnPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
+
+            StagedPlacement stagedPlacement = new StagedPlacement(instantiatedPlacement, placement.PlacementSO.Mods);
+            stagedPlacements.Add(position, stagedPlacement);
+        }
+
+        // foreach (var p in stagedPlacements)
+        // {
+        //     print("position: " + p.Key);
+        //     print("name: " + p.Value.GameObject.name);
+        // }
+
+        // Go through all of the placements again so we can apply spatial mods
+        foreach (KeyValuePair<Vector3Int, Placement> pair in _playerStatsSO.HouseBuild.Placements)
+        {
+            Vector3Int position = pair.Key;
+            Placement placement = pair.Value;
+
+            if (!(typeof(SpatialEffectPlacementSO) == placement.PlacementSO.GetType()))
+            {
+                // we only care about spatial effects here.
+                continue;
+            }
+
+            SpatialEffectPlacementSO spatialPlacement = (SpatialEffectPlacementSO)placement.PlacementSO;
+            foreach (SpatialEffect spatialEffect in spatialPlacement.SpatialEffects)
+            {
+                // print(spatialEffect.Offset);
+                Vector3Int effectedPos = position + spatialEffect.Offset;
+
+                if (stagedPlacements.ContainsKey(effectedPos))
+                {
+                    StagedPlacement stagedPlacement = stagedPlacements[effectedPos];
+                    stagedPlacement.Mods = stagedPlacement.Mods.Concat(spatialEffect.Mods).ToList();
+                }
+            }
+        }
+
+        // Actually apply baby... finally
+        foreach (StagedPlacement stagedPlacement in stagedPlacements.Values)
+        {
+            ApplyModsOnPlacement(stagedPlacement.GameObject, stagedPlacement.Mods);
         }
     }
 

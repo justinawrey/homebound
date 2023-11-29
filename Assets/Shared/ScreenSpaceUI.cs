@@ -31,6 +31,22 @@ public class ScreenSpaceUI : MonoBehaviour
         _uiRectTransform.anchoredPosition = new Vector2(screenPos.x, screenPos.y) + _screenSpaceOffset;
     }
 
+    private void OnDisable()
+    {
+        if (_uiInstance != null)
+        {
+            _uiInstance.SetActive(false);
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (_uiInstance != null)
+        {
+            _uiInstance.SetActive(true);
+        }
+    }
+
     private void InitializeUi()
     {
         IUiInitializer uiInitializer = _uiInstance.GetComponent<IUiInitializer>();

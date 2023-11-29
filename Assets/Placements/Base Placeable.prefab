@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 7756502853525524357}
   - component: {fileID: 1103912712714385854}
   - component: {fileID: -7468840198254778300}
-  m_Layer: 0
+  - component: {fileID: -7353174321883962317}
+  - component: {fileID: -8910883064199523432}
+  m_Layer: 10
   m_Name: Base Placeable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,3 +151,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelUpMods: []
+--- !u!114 &-7353174321883962317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558325765781056088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291dcb7f154094fe391d19049a7d0f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screenSpaceUi: {fileID: -8910883064199523432}
+--- !u!114 &-8910883064199523432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558325765781056088}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787088a3870114c048b0972aa59915f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _contextualUiPrefab: {fileID: 2172765601380822695, guid: bc71163db19884145aae78934fbc8ae9,
+    type: 3}
+  _screenSpaceOffset: {x: 0, y: 0}
